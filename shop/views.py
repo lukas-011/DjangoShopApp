@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Course
 
 def index(request):
-    return HttpResponse("Hello from the shop app")
+    courses = Course.objects.all()
+    return HttpResponse([f"{course.title} <br>" for course in courses])
